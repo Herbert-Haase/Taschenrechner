@@ -32,11 +32,11 @@
                 <button class="temp button">clear</button>
             </div>
             <div class="container column">
-                <div class="operator plus nan button">+</div>
-                <div class="operator minus nan button">-</div>
-                <div class="operator multiplicate nan button">*</div>
-                <div class="operator divide nan button">/</div>
-                <div class="operator nan button">=</div>
+                <div id="plus" class="operator nan button">+</div>
+                <div id="minus" class="operator nan button">-</div>
+                <div id="multiplicate" class="operator nan button">*</div>
+                <div id="divide" class="operator nan button">/</div>
+                <div class="nan button">=</div>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
             flex-direction: column;
         }
         #calculator {
-            width: 400px;
+            width: 385px;
             background-color: rgb(219, 146, 10);
             border: 10px solid rgb(2, 112, 2) ;
             border-radius: 5%;
@@ -66,6 +66,7 @@
             border-radius: 5%;
             line-height: 100px;
             font-size: xx-large;
+            margin-bottom: 5px;
         }
         #numberpad {
             flex-wrap: wrap;
