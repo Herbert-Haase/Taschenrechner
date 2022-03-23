@@ -12,6 +12,7 @@ const operand = {};
 numbuttons.forEach((num) => {
     num.addEventListener('click', () => {
         input.num.push(parseInt(num.textContent))
+        showOnDisplay();
     })
 });
 
@@ -22,17 +23,26 @@ nan.forEach((nanButton) => {
         }
         const actualNum = input.num.reduce((total, num) => total + num, 0);
         if(!operand.firstNum) operand.firstNum = actualNum;
-        operand.secodNum = actualNum;
-        operator(operand.firstNum, operand.operator, operand.secodNum);
+        else {
+            operand.secodNum = actualNum;
+            operator(operand.firstNum, operand.secodNum, operand.operator);
+        }
         delete operand.secodNum;
         delete input.num; input.num = [];
+        showOnDisplay();
     })
 });
 
-const plus = () => { return first = first + second;}
-const minus = () => { return first = first - second;}
-const multiplicate = () => { return first = first * second;}
-const divide = () => { return first = first / second;}
+const plus = (first, second) => { return first = first + second;}
+const minus = (first, second) => { return first = first - second;}
+const multiplicate = (first, second) => { return first = first * second;}
+const divide = (first, second) => { return first = first / second;}
+
+
+function operator(first, second, calculate) {
+    operand.firstNum = calculate(first, second);
+    delete operand.secodNum;
+}
 
 
 operators.forEach((singleOperator) => {
@@ -40,24 +50,26 @@ operators.forEach((singleOperator) => {
       switch(singleOperator.getAttribute("id")) {
           case("plus"):
             operand.operator = plus;
+            display.textContent += "+";
             break;
           case("minus"):
             operand.operator = minus;
+            display.textContent += "-";
             break;
           case("multiplicate"):
             operand.operator = multiplicate;
+            display.textContent += "*";
             break;
           case("divide"):
             operand.operator = divide;
-
-      };
-
+            display.textContent += "/"
+        }
     });
-
 });
 
 function showOnDisplay() {
-    let show = operand.secondNum || operand.firstNum || input.num.join(""):
+    let show = operand.secondNum || operand.firstNum || input.num.join("");
+    display.textContent = show;
 }
 
 
