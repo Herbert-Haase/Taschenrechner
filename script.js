@@ -2,6 +2,7 @@ const numbuttons = document.querySelectorAll('.number');
 const display = document.querySelector('#display');
 const operators = document.querySelectorAll(".operator");
 const nan = document.querySelectorAll(".nan");
+const clearButton = document.querySelector(".clear");
 
 const input = {
     num : []
@@ -11,8 +12,10 @@ const operand = {};
 
 numbuttons.forEach((num) => {
     num.addEventListener('click', () => {
-        input.num.push(parseInt(num.textContent))
-        showOnDisplay();
+        if(input.num.length <= 17) {
+        input.num.push(parseInt(num.textContent));
+        display.textContent = input.num.join("");
+    };
     })
 });
 
@@ -22,7 +25,7 @@ nan.forEach((nanButton) => {
             input.num[i] *= 10 ** (input.num.length -1 -i);
         }
         const actualNum = input.num.reduce((total, num) => total + num, 0);
-        if(!operand.firstNum) operand.firstNum = actualNum;
+        if(operand.firstNum === undefined) operand.firstNum = actualNum;
         else {
             operand.secodNum = actualNum;
             operator(operand.firstNum, operand.secodNum, operand.operator);
@@ -68,9 +71,19 @@ operators.forEach((singleOperator) => {
 });
 
 function showOnDisplay() {
-    let show = operand.secondNum || operand.firstNum || input.num.join("");
+    let show = operand.secondNum ?? operand.firstNum
     display.textContent = show;
 }
+
+function clear() {
+    delete input.num; input.num = [];
+    delete operand.firstNum;
+    delete operand.secodNum;
+    delete operand.operator;
+    display.textContent = "";
+}
+
+clearButton.addEventListener("click", () => { clear()});
 
 
 
