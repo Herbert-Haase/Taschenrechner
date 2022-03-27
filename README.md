@@ -1,2 +1,2 @@
 # Project-Calculator
-A solution to The Odin Project's Calculator exercise
+A simple calculator made with html, css, and javascript.
