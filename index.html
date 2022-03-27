@@ -15,9 +15,6 @@
         <div id="display"></div>
         <div class="container">
             <div id="numberpad" class="container">
-                <button class="temp button">Go back</button>
-                <button class="temp button">temp</button>
-                <button class="temp button">temp</button>
                 <button class="number button">1</button>
                 <button class="number button">2</button>
                 <button class="number button">3</button>
@@ -27,8 +24,7 @@
                 <button class="number button">7</button>
                 <button class="number button">8</button>
                 <button class="number button">9</button>
-                <button class="number button">0</button>
-                <button class="temp button">,</button>
+                <button style="flex: 2;" class="number button">0</button>
                 <button class="clear button">clear</button>
             </div>
             <div class="container column">
@@ -67,6 +63,7 @@
             line-height: 100px;
             font-size: xx-large;
             margin-bottom: 5px;
+            text-align: end;
         }
         #numberpad {
             flex-wrap: wrap;
@@ -75,15 +72,28 @@
             text-align: center;
             background-color: white;
             width: 94px;
-            height: 80px;
             font-size: xx-large;
             border: solid black ;
             border-radius:5%;
             line-height: 80px;
         }
+        .number, .clear {
+            height: 85px;
+        }
+        .nan {
+            height: 65px;
+        }
         .button:active {
             background-color: rgb(214, 210, 210);
-
+        }
+        .filler {
+            width: 94px;
+        }
+        .nan,.clear {
+            background-color: rgb(179, 175, 175);
+        }
+        .clear {
+            color: red;
         }
 
     </style>
