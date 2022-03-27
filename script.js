@@ -21,6 +21,7 @@ numbuttons.forEach((num) => {
 
 nan.forEach((nanButton) => {
     nanButton.addEventListener("click", () => {
+        if(input.num.length === 0) return;
         for(let i = 0; i < input.num.length; i++) {
             input.num[i] *= 10 ** (input.num.length -1 -i);
         }
@@ -71,7 +72,8 @@ operators.forEach((singleOperator) => {
 });
 
 function showOnDisplay() {
-    let show = operand.secondNum ?? operand.firstNum
+    let show = operand.secondNum ?? operand.firstNum;
+    if(show % 1) show = show.toFixed(5);
     display.textContent = show;
 }
 
