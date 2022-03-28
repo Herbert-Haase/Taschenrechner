@@ -9,8 +9,8 @@ const input = {
 };
 const operand = {};
 
-
-numbuttons.forEach((num) => {
+//input
+numbuttons.forEach((num) => {                       
     num.addEventListener('click', () => {
         if(input.num.length <= 17) {
         input.num.push(parseInt(num.textContent));
@@ -18,8 +18,8 @@ numbuttons.forEach((num) => {
     };
     })
 });
-
-nan.forEach((nanButton) => {
+//evaluate input on button press
+nan.forEach((nanButton) => {                       
     nanButton.addEventListener("click", () => {
         if(input.num.length === 0) return;
         for(let i = 0; i < input.num.length; i++) {
@@ -32,7 +32,7 @@ nan.forEach((nanButton) => {
             operator(operand.firstNum, operand.secodNum, operand.operator);
         }
         delete operand.secodNum;
-        delete input.num; input.num = [];
+        input.num = [];
         showOnDisplay();
     })
 });
@@ -48,7 +48,7 @@ function operator(first, second, calculate) {
     delete operand.secodNum;
 }
 
-
+//use operators
 operators.forEach((singleOperator) => {
     singleOperator.addEventListener("click", () => {
       switch(singleOperator.getAttribute("id")) {
